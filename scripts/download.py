@@ -64,7 +64,7 @@ def extract_phenotype_mappings():
         rows = cursor.fetchall()
         conn.close()
 
-        with open(tsv_path, 'w') as f:
+        with open(tsv_path, "w") as f:
             # Write header line
             f.write("id\tname\n")
             for row in rows:

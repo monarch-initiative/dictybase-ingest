@@ -79,7 +79,7 @@ def basic_dictybase_1(test_row_1, phenotype_mapping_cache):
     koza_transform = KozaTransform(
         mappings={"dictybase_phenotype_names_to_ids": phenotype_mapping_cache},
         writer=PassthroughWriter(),
-        extra_fields={}
+        extra_fields={},
     )
     return transform_record(koza_transform, test_row_1)
 
@@ -90,7 +90,7 @@ def basic_dictybase_2(test_row_2, phenotype_mapping_cache):
     koza_transform = KozaTransform(
         mappings={"dictybase_phenotype_names_to_ids": phenotype_mapping_cache},
         writer=PassthroughWriter(),
-        extra_fields={}
+        extra_fields={},
     )
     return transform_record(koza_transform, test_row_2)
 
@@ -101,7 +101,7 @@ def result_no_phenotypes(test_row_no_phenotypes, phenotype_mapping_cache):
     koza_transform = KozaTransform(
         mappings={"dictybase_phenotype_names_to_ids": phenotype_mapping_cache},
         writer=PassthroughWriter(),
-        extra_fields={}
+        extra_fields={},
     )
     return transform_record(koza_transform, test_row_no_phenotypes)
 
@@ -112,50 +112,40 @@ def result_multiple_genes(test_row_multiple_genes, phenotype_mapping_cache):
     koza_transform = KozaTransform(
         mappings={"dictybase_phenotype_names_to_ids": phenotype_mapping_cache},
         writer=PassthroughWriter(),
-        extra_fields={}
+        extra_fields={},
     )
     return transform_record(koza_transform, test_row_multiple_genes)
 
 
 def test_association_count_two_phenotypes(basic_dictybase_1):
     """Test that two associations are created for two phenotypes."""
-    associations = [
-        a for a in basic_dictybase_1 if isinstance(a, GeneToPhenotypicFeatureAssociation)
-    ]
+    associations = [a for a in basic_dictybase_1 if isinstance(a, GeneToPhenotypicFeatureAssociation)]
     assert len(associations) == 2
 
 
 def test_association_count_three_phenotypes(basic_dictybase_2):
     """Test that three associations are created for three phenotypes."""
-    associations = [
-        a for a in basic_dictybase_2 if isinstance(a, GeneToPhenotypicFeatureAssociation)
-    ]
+    associations = [a for a in basic_dictybase_2 if isinstance(a, GeneToPhenotypicFeatureAssociation)]
     assert len(associations) == 3
 
 
 def test_association_subject(basic_dictybase_1):
     """Test association subject (gene ID)."""
-    associations = [
-        a for a in basic_dictybase_1 if isinstance(a, GeneToPhenotypicFeatureAssociation)
-    ]
+    associations = [a for a in basic_dictybase_1 if isinstance(a, GeneToPhenotypicFeatureAssociation)]
     for association in associations:
         assert association.subject == "dictyBase:DDB_G0283613"
 
 
 def test_association_predicate(basic_dictybase_1):
     """Test association predicate."""
-    associations = [
-        a for a in basic_dictybase_1 if isinstance(a, GeneToPhenotypicFeatureAssociation)
-    ]
+    associations = [a for a in basic_dictybase_1 if isinstance(a, GeneToPhenotypicFeatureAssociation)]
     for association in associations:
         assert association.predicate == "biolink:has_phenotype"
 
 
 def test_association_objects(basic_dictybase_1):
     """Test association objects (phenotype IDs)."""
-    associations = [
-        a for a in basic_dictybase_1 if isinstance(a, GeneToPhenotypicFeatureAssociation)
-    ]
+    associations = [a for a in basic_dictybase_1 if isinstance(a, GeneToPhenotypicFeatureAssociation)]
     objects = [a.object for a in associations]
     assert "DDPHENO:0000225" in objects
     assert "DDPHENO:0000163" in objects
@@ -163,9 +153,7 @@ def test_association_objects(basic_dictybase_1):
 
 def test_association_knowledge_source(basic_dictybase_1):
     """Test association knowledge source."""
-    associations = [
-        a for a in basic_dictybase_1 if isinstance(a, GeneToPhenotypicFeatureAssociation)
-    ]
+    associations = [a for a in basic_dictybase_1 if isinstance(a, GeneToPhenotypicFeatureAssociation)]
     for association in associations:
         assert association.primary_knowledge_source == "infores:dictybase"
         assert "infores:monarchinitiative" in association.aggregator_knowledge_source
@@ -200,33 +188,27 @@ def real_data_associations(real_data_row, phenotype_mapping_cache):
     koza_transform = KozaTransform(
         mappings={"dictybase_phenotype_names_to_ids": phenotype_mapping_cache},
         writer=PassthroughWriter(),
-        extra_fields={}
+        extra_fields={},
     )
     return transform_record(koza_transform, real_data_row)
 
 
 def test_real_data_association_count(real_data_associations):
     """Test with actual data from all-mutants-ddb_g.txt."""
-    associations = [
-        a for a in real_data_associations if isinstance(a, GeneToPhenotypicFeatureAssociation)
-    ]
+    associations = [a for a in real_data_associations if isinstance(a, GeneToPhenotypicFeatureAssociation)]
     assert len(associations) == 3
 
 
 def test_real_data_subject(real_data_associations):
     """Test real data subject."""
-    associations = [
-        a for a in real_data_associations if isinstance(a, GeneToPhenotypicFeatureAssociation)
-    ]
+    associations = [a for a in real_data_associations if isinstance(a, GeneToPhenotypicFeatureAssociation)]
     for association in associations:
         assert association.subject == "dictyBase:DDB_G0279921"
 
 
 def test_real_data_objects(real_data_associations):
     """Test real data phenotype objects."""
-    associations = [
-        a for a in real_data_associations if isinstance(a, GeneToPhenotypicFeatureAssociation)
-    ]
+    associations = [a for a in real_data_associations if isinstance(a, GeneToPhenotypicFeatureAssociation)]
     objects = [a.object for a in associations]
     assert "DDPHENO:0000393" in objects
     assert "DDPHENO:0000162" in objects
