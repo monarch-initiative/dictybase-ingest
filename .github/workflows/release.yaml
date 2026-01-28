@@ -62,10 +62,10 @@ jobs:
           tag_name: ${{ steps.tag.outputs.tag }}
           name: Release ${{ steps.tag.outputs.tag }}
           body: |
-            Automated release of PomBase ingest data.
+            Automated release of Dictybase ingest data.
 
             ## Transforms included
-            - gene (S. pombe gene nodes)
+            - gene (D. discoideum gene nodes)
             - gene_to_phenotype (gene to phenotype associations)
           draft: false
           prerelease: false
