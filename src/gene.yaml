@@ -1,0 +1,24 @@
+name: 'dictybase_gene'
+
+reader:
+  files:
+    - '../data/gene_information.txt'
+  format: 'csv'
+  delimiter: '\t'
+  columns:
+    - 'GENE ID'
+    - 'Gene Name'
+    - 'Synonyms'
+    - 'Gene products'
+
+writer:
+  node_properties:
+    - 'id'
+    - 'category'
+    - 'name'
+    - 'symbol'
+    - 'full_name'
+    - 'in_taxon'
+    - 'in_taxon_label'
+    - 'synonym'
+    - 'provided_by'

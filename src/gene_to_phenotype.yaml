@@ -1,0 +1,30 @@
+name: 'dictybase_gene_to_phenotype'
+
+reader:
+  files:
+    - '../data/all-mutants-ddb_g.txt'
+  format: 'csv'
+  delimiter: '\t'
+  header_mode: 0
+  columns:
+    - 'Systematic_Name'
+    - 'Strain_Descriptor'
+    - 'Associated gene(s)'
+    - 'DDB_G_ID'
+    - 'Phenotypes'
+
+transform:
+  mappings:
+    - 'dictybase_phenotype_names_to_ids.yaml'
+
+writer:
+  edge_properties:
+    - 'id'
+    - 'category'
+    - 'subject'
+    - 'predicate'
+    - 'object'
+    - 'aggregator_knowledge_source'
+    - 'primary_knowledge_source'
+    - 'knowledge_level'
+    - 'agent_type'
