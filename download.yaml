@@ -1,12 +1,14 @@
-# Download configuration for dictybase-ingest
-
-downloads:
-  # Gene information
-  - url: "http://dictybase.org/db/cgi-bin/dictyBase/download/download.pl?area=general&ID=gene_information.txt"
-    local_name: "data/gene_information.txt"
-  # Dictybase phenotype ontology (SQLite) - to build mapping from term names to term ids
-  - url: "https://s3.amazonaws.com/bbop-sqlite/ddpheno.db"
-    local_name: "data/ddpheno.db"
-  # Gene<-Strain->Phenotype mappings
-  - url: "http://dictybase.org/db/cgi-bin/dictyBase/download/download.pl?area=mutant_phenotypes&ID=all-mutants-ddb_g.txt"
-    local_name: "data/all-mutants-ddb_g.txt"
+### This file is a YAML configuration that specifies
+### the data to be downloaded and ingested for this project.
+### The configuration is used by `kghub-downloader`.
+### For more information, see https://github.com/monarch-initiative/kghub-downloader
+---
+# Gene information
+- url: "http://dictybase.org/db/cgi-bin/dictyBase/download/download.pl?area=general&ID=gene_information.txt"
+  local_name: "data/gene_information.txt"
+# Dictybase phenotype ontology (SQLite) - to build mapping from term names to term ids
+- url: "https://s3.amazonaws.com/bbop-sqlite/ddpheno.db"
+  local_name: "data/ddpheno.db"
+# Gene<-Strain->Phenotype mappings
+- url: "http://dictybase.org/db/cgi-bin/dictyBase/download/download.pl?area=mutant_phenotypes&ID=all-mutants-ddb_g.txt"
+  local_name: "data/all-mutants-ddb_g.txt"
