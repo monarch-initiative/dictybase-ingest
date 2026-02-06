@@ -24,6 +24,7 @@ install:
 [group('ingest')]
 download: install
     uv run downloader download.yaml
+    sh scripts/after_download.sh
 
 # Run all transforms
 [group('ingest')]
