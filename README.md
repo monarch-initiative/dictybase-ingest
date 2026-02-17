@@ -1,4 +1,4 @@
-# dictybase-ingest
+# Dictybase
 
 Dictybase is a comprehensive database for the ameboid protozoan _Dictyostelium discoideum_, which is a powerful model system for genetic and functional analysis of gene function.
 
@@ -33,40 +33,6 @@ Data is available in a well-documented easy-to-parse GAF-like format with associ
     - category (GeneToPhenotypicFeatureAssociation)
     - aggregating_knowledge_source (`["infores:monarchinitiative"]`)
     - primary_knowledge_source (`infores:dictybase`)
-
-## Setup
-
-```bash
-just setup
-```
-
-## Usage
-
-### Download source data
-
-```bash
-just download
-```
-
-### Run transforms
-
-```bash
-# Run all transforms
-just transform-all
-
-# Run specific transform
-just transform <transform_name>
-```
-
-### Run tests
-
-```bash
-just test
-```
-
-## Adding New Ingests
-
-Use the `create-koza-ingest` Claude skill to add new ingests to this repository.
 
 ## Citation
 
